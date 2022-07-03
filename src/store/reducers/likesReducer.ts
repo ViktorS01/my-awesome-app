@@ -1,14 +1,14 @@
-import { LikesPostActionsTypes } from '../types/likes';
+import {
+  IActionLike,
+  ILikesState,
+  LikesPostActionsTypes,
+} from '../types/likes';
 
-const initialState = {
+const initialState: ILikesState = {
   likes: 0,
 };
 
-interface IAction {
-  type: string;
-}
-
-export const likesReducer = (state = initialState, action: IAction) => {
+export const likesReducer = (state = initialState, action: IActionLike) => {
   switch (action.type) {
     case LikesPostActionsTypes.INCREMENT:
       return { ...state, likes: state.likes + 1 };

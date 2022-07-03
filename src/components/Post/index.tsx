@@ -6,6 +6,8 @@ import {
   incrementLikes,
   decrementLikes,
 } from '../../store/actions/likesAction';
+import { Dispatch } from 'redux';
+import Comment from './Comment';
 
 interface IPost {
   likes: number;
@@ -15,11 +17,14 @@ interface IPost {
 
 const Post: FC<IPost> = ({ likes, onIncrementLike, onDecrementLike }) => {
   return (
-    <ST.PostWrapper>
-      <button onClick={() => onIncrementLike()}>Like</button>
-      <div>{likes} ❤</div>
-      <button onClick={() => onDecrementLike()}>DisLike </button>
-    </ST.PostWrapper>
+    <>
+      <ST.PostWrapper>
+        <button onClick={() => onIncrementLike()}>Like</button>
+        <div>{likes} ❤</div>
+        <button onClick={() => onDecrementLike()}>DisLike </button>
+      </ST.PostWrapper>
+      <Comment />
+    </>
   );
 };
 
@@ -30,7 +35,7 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     onIncrementLike: () => dispatch(incrementLikes()),
     onDecrementLike: () => dispatch(decrementLikes()),
