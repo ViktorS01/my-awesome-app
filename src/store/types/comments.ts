@@ -14,8 +14,5 @@ export interface ICommentsState {
 
 export interface IActionComments {
   type: string;
-  payload: {
-    value: string;
-    id: number;
-  };
+  payload: IComment;
 }
